@@ -1,0 +1,6 @@
+
+  - name: create_user
+    user:
+      name: "{{user_name}}"
+      state: present
+

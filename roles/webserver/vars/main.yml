@@ -1,0 +1,9 @@
+---
+# vars file for webserver
+
+
+'package_name': 'httpd'
+'service_name': 'httpd'
+'user_name': 'user10'
+
+

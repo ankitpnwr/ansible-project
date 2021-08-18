@@ -1,0 +1,33 @@
+---
+
+- hosts: localhost
+  become: true
+  connection: local
+  gather_facts: false
+  tasks:
+  - name: clear the environment
+    file: 
+     name: Helloworldwebapp-dev.war
+     state: absent
+
+  - name: download package from artifactory server
+    command: '/usr/bin/curl -uplusforum.in@gmail.com:AP6RKpA8kTshYx9zJ4Q9gyNdMja -O "https://pluforum.jfrog.io/artifactory/repo20/Helloworldwebapp-dev.war"'
+
+- hosts: appservers
+  remote_user: centos
+  become: true
+  gather_facts: false
+
+  tasks:
+
+  - name: rename package file
+    command: '/usr/bin/mv /opt/tomcat/webapps/Helloworldwebapp-dev.war /opt/tomcat/webapps/Helloworldwebapp-dev.war.bak'
+
+  - name: deploy war file to server
+    copy: 
+     src: ./Helloworldwebapp-dev.war 
+     dest: /opt/tomcat/webapps/Helloworldwebapp-dev.war
+
+  - name: start app server
+    command: sh /opt/tomcat/bin/catalina.sh start
+

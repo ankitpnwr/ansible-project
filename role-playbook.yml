@@ -1,0 +1,12 @@
+
+
+- name: manage site
+  gather_facts: false
+  hosts: appservers
+  remote_user: centos
+  become: true
+
+  roles:
+  - webserver
+
+
