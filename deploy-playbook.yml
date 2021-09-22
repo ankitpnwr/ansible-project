@@ -10,8 +10,13 @@
      name: Helloworldwebapp-dev.war
      state: absent
 
-  - name: download package from artifactory server
-    command: '/usr/bin/curl -uplusforum.in@gmail.com:AP6RKpA8kTshYx9zJ4Q9gyNdMja -O "https://pluforum.jfrog.io/artifactory/repo20/Helloworldwebapp-dev.war"'
+  - name: checkout from github
+    git:
+     repo: https://github.com/ganeshhp/helloworldweb.git
+     dest: ../helloworldweb
+
+#  - name: download package from artifactory server
+#    command: 'curl -upalnitkarg@gmail.com:APABSViHFUY5JUAPqRqPnZMRSzH -O "https://autofact.jfrog.io/artifactory/bankapp/petclinic.war"'
 
 - hosts: appservers
   remote_user: centos
@@ -25,7 +30,7 @@
 
   - name: deploy war file to server
     copy: 
-     src: ./Helloworldwebapp-dev.war 
+     src: ../helloworldweb/target/Helloworldwebapp-dev.war 
      dest: /opt/tomcat/webapps/Helloworldwebapp-dev.war
 
   - name: start app server
