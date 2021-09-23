@@ -18,7 +18,7 @@
 #  - name: download package from artifactory server
 #    command: 'curl -upalnitkarg@gmail.com:APABSViHFUY5JUAPqRqPnZMRSzH -O "https://autofact.jfrog.io/artifactory/bankapp/petclinic.war"'
 
-- hosts: appservers
+- hosts: appserver
   remote_user: centos
   become: true
   gather_facts: false
