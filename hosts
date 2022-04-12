@@ -14,10 +14,10 @@
 localhost
 
 [appservers]
-172.31.22.236
+10.10.111.33
 
 [jenkins]
-172.31.16.160
+10.10.111.32
 
 [main:children]
 
