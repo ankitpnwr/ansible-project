@@ -19,7 +19,7 @@
 #    command: 'curl -upalnitkarg@gmail.com:APABSViHFUY5JUAPqRqPnZMRSzH -O "https://autofact.jfrog.io/artifactory/bankapp/petclinic.war"'
 
 - hosts: appserver
-  remote_user: centos
+  remote_user: root
   become: true
   gather_facts: false
 
@@ -30,9 +30,9 @@
 
   - name: deploy war file to server
     copy: 
-     src: ../helloworldweb/target/Helloworldwebapp-dev.war 
-     dest: /opt/tomcat/webapps/Helloworldwebapp-dev.war
+     src: '../helloworldweb/target/Helloworldwebapp-dev.war'
+     dest: '/opt/tomcat/webapps/Helloworldwebapp-dev.war'
 
   - name: start app server
-    command: sh /opt/tomcat/bin/catalina.sh start
+    command: 'sh /opt/tomcat/bin/catalina.sh start'
 
